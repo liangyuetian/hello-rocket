@@ -1,47 +1,25 @@
 #[macro_use] extern crate rocket;
 
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world1!"
-}
+mod cats;
+mod dogs;
 
-#[get("/word")]
-fn word2() -> &'static str {
-    "world!"
-}
-// #[get("/hello/<name>")]
-// fn hello(name: & str) -> String {
-//     let mut s1 = "world!".to_string();
-//     let s2 = name.to_string();
-//     s1.push_str(s2.as_str());
-//     format!("Hello, {}!", s1)
-// }
-
-#[get("/hello/<name>/<age>/<cool>")]
-fn hello(name: &str, age: u8, cool: bool) -> String {
-    if cool {
-        format!("You're a cool {} year old, {}!", age, name)
-    } else {
-        format!("{}, we need to talk about your coolness.", name)
-    }
-}
-
-#[get("/foo/<_>/bar", rank = 1)] // rank 设置排名
-fn foo_bar() -> &'static str {
-    "Foo _____ bar!"
-}
-
-#[get("/<_..>")]
-fn everything() -> &'static str {
-    "Hey, you're here."
-}
+use std::io;
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
+
     let _rocket = rocket::build()
-        .mount("/", routes![hello])
-        .mount("/", routes![foo_bar])
-        .mount("/", routes![everything])
+        .mount("/", routes![dogs::dogs::index])
+        .mount("/", routes![dogs::dogs::hello])
+        .mount("/", routes![dogs::dogs::word])
+        .mount("/", routes![dogs::dogs::foo_bar])
+        .mount("/", routes![dogs::dogs::everything])
+        .mount("/", routes![dogs::dogs::delay])
+        .mount("/", routes![dogs::dogs::blocking_task])
+        .mount("/", routes![dogs::dogs::admin_panel_redirect])
+        .mount("/", routes![dogs::dogs::login])
+        .mount("/", routes![dogs::dogs::logout])
+        .mount("/", routes![dogs::dogs::user])
         .launch()
         .await?;
 
