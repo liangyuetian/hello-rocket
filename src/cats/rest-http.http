@@ -1,0 +1,35 @@
+GET http://localhost:7002/cats?a=1
+Accept: application/json
+
+
+###
+GET http://localhost:7002/cats2?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats3?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats4?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats5?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats6/x?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats7/x?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats8?a=1
+Accept: application/json
+
+###
+GET http://localhost:7002/cats9?a=1
+Accept: application/json
